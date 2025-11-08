@@ -5,10 +5,10 @@ import { navLinks } from "@/utils/constant";
 
 export default function Header() {
   return (
-    <header className="fixed z-10 top-0 w-full bg-gradient-to-b from-gray-700/60 via-gray-700/40 to-transparent">
+    <header className="fixed z-10 top-0 w-full bg-linear-to-b from-gray-700/60 via-gray-700/40 to-transparent">
       <div className="container mx-auto px-[5vw] py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex flex-1 items-center justify-start">
           <Image
             src="/logo.png"
             alt="Logo"
@@ -27,7 +27,7 @@ export default function Header() {
         </Link>
 
         {/* Menu Items */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden flex-[2] md:flex space-x-8 items-center justify-center">
           {navLinks?.map((item, index) => (
             <Link
               key={index}
@@ -40,12 +40,14 @@ export default function Header() {
         </nav>
 
         {/* Enquire Button */}
-        <Link
+        <div className="flex flex-1 items-center justify-end">
+          <Link
           href="/enquire"
           className="px-4 rounded-md py-2 text-white font-medium bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 shadow-lg"
         >
           Enquire
         </Link>
+        </div>
       </div>
     </header>
   );
