@@ -9,6 +9,9 @@ import {
   User,
   TrendingUp,
   Send,
+  Sparkles,
+  LocateIcon,
+  CalendarDays,
 } from "lucide-react";
 
 export default function Hero() {
@@ -24,7 +27,7 @@ export default function Hero() {
       />
 
       {/* Gradient Overlay — smooth cinematic fade */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-transparent" />
 
       {/* Main Content */}
       <div className="absolute inset-0 flex items-center justify-center px-4">
@@ -33,7 +36,7 @@ export default function Hero() {
           <div className="flex-1 max-w-[40vw] space-y-6">
             {/* Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-400/20 text-yellow-300 border border-yellow-400/30 backdrop-blur-sm">
-              <Star className="w-4 h-4 mr-1" />
+              <Sparkles className="w-4 h-4 mr-1" />
               Premium Travel Experiences
             </div>
 
@@ -77,12 +80,12 @@ export default function Hero() {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button className="flex-1 bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 text-white py-3 px-6 rounded-full font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center">
+            <div className="flex flex-col max-w-[28vw] sm:flex-row gap-3">
+              <button className="flex-1 cursor-pointer bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600  duration-300 hover:scale-105 text-white py-3 px-6 rounded-full font-semibold hover:bg-orange-600 transition-all flex items-center justify-center">
                 <Send className="w-4 h-4 mr-2" />
                 Start Your Journey
               </button>
-              <button className="flex-1  bg-white/10  backdrop-blur-sm text-white py-3 px-6 rounded-full border-2 border-white/30 font-semibold hover:bg-white/10 transition-colors">
+              <button className="flex-1 cursor-pointer bg-white/10  backdrop-blur-sm text-white py-3 px-6 rounded-full border-2 border-white/30 font-semibold hover:bg-white/10 transition-all duration-300 hover:scale-105">
                 View Packages
               </button>
             </div>
@@ -98,26 +101,30 @@ export default function Hero() {
 
               {/* Form Fields */}
               <div className="space-y-3">
-                <div className="relative">
-                  <select className="w-full bg-white/10 text-white placeholder-white/60 p-3 rounded-lg border border-white/20 backdrop-blur-sm appearance-none focus:outline-none focus:border-orange-400">
-                    <option>Where do you want to go?</option>
-                    <option>Goa</option>
-                    <option>Kerala</option>
-                    <option>Tamil Nadu</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/60" />
+                <div className="flex flex-row items-center border p-3 rounded-lg border-white/20 bg-white/10">
+                  <MapPin className=" w-5 h-5 text-white/60" />
+                  <input
+                    type="text"
+                    placeholder="Where do you want to go?"
+                    className=" w-full outline-none placeholder-white/60 pl-2 text-white"
+                  />
                 </div>
 
-                <div className="flex flex-row">
-                  <div className="relative">
+                <div className="flex flex-row w-full gap-3">
+                  <div className="relative flex-1">
                     <input
                       type="date"
-                      className="w-full bg-white/10 text-white placeholder-white/60 p-3 rounded-lg border border-white/20 backdrop-blur-sm focus:outline-none focus:border-orange-400"
+                      className="w-full bg-white/10 text-white placeholder-white/60 p-3 rounded-lg border border-white/20 backdrop-blur-sm focus:outline-none focus:border-orange-400 
+      [&::-webkit-calendar-picker-indicator]:opacity-0 
+      [&::-webkit-calendar-picker-indicator]:absolute 
+      [&::-webkit-calendar-picker-indicator]:w-full 
+      [&::-webkit-calendar-picker-indicator]:h-full 
+      [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                     />
-                    <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/60" />
+                    <CalendarDays className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white pointer-events-none" />
                   </div>
 
-                  <div className="relative">
+                  <div className="relative flex-1">
                     <input
                       type="number"
                       min="1"
@@ -130,19 +137,61 @@ export default function Hero() {
               </div>
 
               {/* Submit Button */}
-              <button className="w-full bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 transition-all duration-300 hover:scale-105 text-white py-3 px-6 rounded-lg font-semibold hover:bg-red-600 transition-colors flex items-center justify-center">
-                <MapPin className="w-5 h-5 mr-2" />
+              <button className="w-full bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white h-14 rounded-xl shadow-xl shadow-orange-500/50 flex items-center justify-center">
+                <Send className="w-5 h-5 mr-2" />
                 Submit Enquiry
               </button>
 
               {/* Bottom Note */}
-              <div className="flex items-center justify-center space-x-2 pt-4">
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+              <div className="w-full h-[.5px] bg-white/20 mt-6"></div>
+              <div className="flex items-center justify-start space-x-2 pt-2 mb-2">
+                <div className="flex items-center space-x-2">
+                  {/* Circular Image */}
+                  <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-orange-400">
+                    <Image
+                      src="https://i.pinimg.com/1200x/95/04/d2/9504d2fe72e0219dd0d41a5c4a4cb528.jpg"
+                      alt="Traveler"
+                      width={60}
+                      height={60}
+                      className="object-cover w-full h-full"
+                      priority
+                    />
+                  </div>
+
+                  {/* Small orange dots */}
+                  <div className="w-9 h-9 ml-[-25px] rounded-full overflow-hidden border-2 border-orange-400">
+                    <Image
+                      src="https://i.pinimg.com/1200x/95/04/d2/9504d2fe72e0219dd0d41a5c4a4cb528.jpg"
+                      alt="Traveler"
+                      width={60}
+                      height={60}
+                      className="object-cover w-full h-full"
+                      priority
+                    />
+                  </div>
+                  <div className="w-9 h-9 ml-[-25px] rounded-full overflow-hidden border-2 border-orange-400">
+                    <Image
+                      src="https://i.pinimg.com/1200x/95/04/d2/9504d2fe72e0219dd0d41a5c4a4cb528.jpg"
+                      alt="Traveler"
+                      width={60}
+                      height={60}
+                      className="object-cover w-full h-full"
+                      priority
+                    />
+                  </div>
+                  <div className="w-9 h-9 ml-[-25px] rounded-full overflow-hidden border-2 border-orange-400">
+                    <Image
+                      src="https://i.pinimg.com/1200x/95/04/d2/9504d2fe72e0219dd0d41a5c4a4cb528.jpg"
+                      alt="Traveler"
+                      width={60}
+                      height={60}
+                      className="object-cover w-full h-full"
+                      priority
+                    />
+                  </div>
                 </div>
-                <p className="text-white/70 text-xs">
+
+                <p className="text-white/70 text-sm">
                   Join 500+ successful group tours
                 </p>
               </div>

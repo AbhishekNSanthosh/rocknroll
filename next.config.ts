@@ -1,9 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactCompiler: true,
+  reactStrictMode: true,
+
   images: {
-    domains: ["i.pinimg.com"], // ✅ allow external images from Pinterest CDN
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.pinimg.com",
+      },
+    ],
   },
 };
 
