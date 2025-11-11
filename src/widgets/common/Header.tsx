@@ -106,7 +106,7 @@ export default function Header() {
     >
       <div className="container px-[5vw] py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex flex-1 items-center justify-start">
+        <Link href="/" className="flex flex-[1.5] lg:flex-1 items-center justify-start">
           <Image
             src="/logo.png"
             alt="Logo"
