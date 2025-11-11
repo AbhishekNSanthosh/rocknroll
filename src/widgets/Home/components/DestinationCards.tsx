@@ -12,6 +12,8 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
+import { whatsappLink } from "@/utils/constant";
 
 interface DestinationCardProps {
   image: string;
@@ -244,11 +246,11 @@ export function DestinationCard({
 
                   {/* Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <button className="flex-1 bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white h-12 rounded-xl shadow-lg">
+                    <Link target="_blank" href={whatsappLink} className="flex-1 flex items-center justify-center py-3 bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white h-12 rounded-xl shadow-lg">
                       Enquire Now
-                    </button>
+                    </Link>
                     <button
-                      className="flex-1 border-2 border-orange-500 text-orange-600 hover:bg-orange-50 h-12 rounded-xl"
+                      className="flex-1 border-2 py-3 border-orange-500 text-orange-600 hover:bg-orange-50 h-12 rounded-xl"
                       onClick={() => setIsModalOpen(false)}
                     >
                       Close

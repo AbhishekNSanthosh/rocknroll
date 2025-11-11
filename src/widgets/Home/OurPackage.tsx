@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { ImageWithFallback } from "../common/ImageFallBack";
+import Link from "next/link";
 
 interface Package {
   destinations: string;
@@ -672,10 +673,19 @@ export function PackagesSection() {
       message: "",
     });
   };
+  const whatsappNumber = "918848774596";
+
+  // Function to create a WhatsApp link for each package
+  const getWhatsAppLink = (pkg: Package) => {
+    const message = encodeURIComponent(
+      `Hi Rock N Roll Tour Planners, I'm interested in the ${pkg.destinations} (${pkg.duration}) package. Could you please share more details?`
+    );
+    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  };
 
   return (
-    <section id="packages" className="py-20">
-      <div className="px-[5vw]">
+    <>
+      <div className="px-[5vw] pt-[10vh]">
         {/* OUR PACKAGES Header Section */}
         <div className="mb-16">
           <div className="grid md:grid-cols-12 gap-8 items-center">
@@ -773,10 +783,13 @@ export function PackagesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {packageCategories[activeTab as keyof typeof packageCategories].map(
             (pkg, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-100 hover:-translate-y-2 flex flex-col"
-                onClick={() => setSelectedPackage(pkg)}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden shrink-0">
@@ -786,22 +799,19 @@ export function PackagesSection() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
-
-                  {/* Duration Badge */}
                   <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md flex items-center gap-2">
                     <Clock className="h-3 w-3 text-orange-500" />
                     <span className="text-gray-800">{pkg.duration}</span>
                   </div>
-                  {/* Destinations Overlay */}
                   <div className="absolute bottom-3 left-3 right-3">
                     <h3 className="text-white mb-1 drop-shadow-lg">
                       {pkg.destinations}
                     </h3>
                   </div>
                 </div>
+
                 {/* Content */}
                 <div className="p-5 bg-linear-to-br from-white to-orange-50/30 group-hover:from-orange-50/50 group-hover:to-red-50/50 transition-all duration-300 grow flex flex-col">
-                  {/* Highlights */}
                   <div className="space-y-2 mb-4 grow">
                     {pkg.highlights.map((highlight, idx) => (
                       <div
@@ -813,17 +823,22 @@ export function PackagesSection() {
                       </div>
                     ))}
                   </div>
-                  {/* Request Button */}
-                  <button className="w-full py-3 bg-linear-to-r from-orange-500 to-red-500 text-white rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+
+                  {/* Request Button → WhatsApp */}
+                  <Link
+                    href={getWhatsAppLink(pkg)}
+                    target="_blank"
+                    className="w-full py-3 bg-linear-to-r from-orange-500 to-red-500 text-white rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  >
                     <span>Request Package</span>
                     <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </button>
+                  </Link>
                 </div>
-                {/* linear Border Effect */}
+
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <div className="absolute inset-0 rounded-2xl ring-2 ring-orange-400/50" />
                 </div>
-              </div>
+              </motion.div>
             )
           )}
         </div>
@@ -847,12 +862,17 @@ export function PackagesSection() {
                 budget, and travel dates. Contact us to create your perfect
                 journey!
               </p>
-              <button className="px-10 py-4 bg-linear-to-r from-orange-500 to-red-500 text-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+              <Link
+                href="https://wa.me/918848774596?text=Hi%20Rock%20n%20Roll%20Tour%20Planners%2C%20I%20would%20like%20to%20request%20a%20custom%20package."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-10 py-4 bg-linear-to-r from-orange-500 to-red-500 text-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 inline-block"
+              >
                 <span className="flex items-center gap-2">
                   Request Custom Package
                   <ArrowRight className="h-5 w-5" />
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -1030,6 +1050,6 @@ export function PackagesSection() {
           </>
         )}
       </AnimatePresence>
-    </section>
+    </>
   );
 }

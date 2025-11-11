@@ -51,34 +51,36 @@ export default function TourPackages() {
   ];
 
   return (
-    <div className="flex flex-col px-[5vw] items-center justify-center">
-      <motion.div
-        className="inline-block mb-4"
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        // viewport={{ once: true }}
-        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-      >
-        <div className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-orange-100 to-red-100 rounded-full">
-          <Award className="h-4 w-4 text-orange-600" />
-          <span className="text-orange-700">Tour Packages</span>
+    <section className="pt-[15vh]" id="packages">
+      <div className="flex flex-col px-[5vw] items-center justify-center">
+        <motion.div
+          className="inline-block mb-4"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          // viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+        >
+          <div className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-orange-100 to-red-100 rounded-full">
+            <Award className="h-4 w-4 text-orange-600" />
+            <span className="text-orange-700">Tour Packages</span>
+          </div>
+        </motion.div>
+        <h2 className="text-gray-900 mb-4">
+          <span className="bg-linear-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent">
+            Tailored Experiences
+          </span>{" "}
+          For Every Journey
+        </h2>
+        <p className="text-gray-600 mx-auto">
+          Specialized packages for industrial visits, family tours, school
+          trips, and adventure getaways
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+          {packages.map((pkg, index) => (
+            <PackageCard key={index} {...pkg} />
+          ))}
         </div>
-      </motion.div>
-      <h2 className="text-gray-900 mb-4">
-        <span className="bg-linear-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent">
-          Tailored Experiences
-        </span>{" "}
-        For Every Journey
-      </h2>
-      <p className="text-gray-600 mx-auto">
-        Specialized packages for industrial visits, family tours, school trips,
-        and adventure getaways
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-        {packages.map((pkg, index) => (
-          <PackageCard key={index} {...pkg} />
-        ))}
       </div>
-    </div>
+    </section>
   );
 }

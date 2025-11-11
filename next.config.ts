@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "i.pinimg.com",
       },
+      {
+        protocol: 'https',
+        hostname: 'videos.pexels.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.shutterstock.com',
+      },
     ],
   },
 };

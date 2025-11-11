@@ -69,38 +69,40 @@ export default function Destinations() {
   ];
 
   return (
-    <div className="px-[5vw] py-[15vh]">
-      <div className="w-full items-center justify-center flex flex-col">
-        <motion.div
-          className="inline-block mb-4"
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          //   viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-        >
-          <div className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-orange-100 to-red-100 rounded-full">
-            <Compass className="h-4 w-4 text-orange-600" />
-            <span className="text-orange-700">Explore Destinations</span>
+    <section id="destinations">
+      <div className="px-[5vw] pt-[15vh]">
+        <div className="w-full items-center justify-center flex flex-col">
+          <motion.div
+            className="inline-block mb-4"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            //   viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >
+            <div className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-orange-100 to-red-100 rounded-full">
+              <Compass className="h-4 w-4 text-orange-600" />
+              <span className="text-orange-700">Explore Destinations</span>
+            </div>
+          </motion.div>
+          <h2 className="text-gray-900 mb-4">
+            <span className="bg-linear-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent">
+              Discover Paradise
+            </span>{" "}
+            Across South India
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Explore our handpicked selection of India's most breathtaking
+            destinations
+          </p>
+        </div>
+        <div className="flex justify-center mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {destinations.map((destination, index) => (
+              <DestinationCard key={index} {...destination} />
+            ))}
           </div>
-        </motion.div>
-        <h2 className="text-gray-900 mb-4">
-          <span className="bg-linear-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text text-transparent">
-            Discover Paradise
-          </span>{" "}
-          Across South India
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Explore our handpicked selection of India's most breathtaking
-          destinations
-        </p>
-      </div>
-      <div className="flex justify-center mt-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {destinations.map((destination, index) => (
-            <DestinationCard key={index} {...destination} />
-          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

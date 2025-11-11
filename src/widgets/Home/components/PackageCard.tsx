@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { ImageWithFallback } from '@/widgets/common/ImageFallBack';
+import { ImageWithFallback } from "@/widgets/common/ImageFallBack";
 import {
   Clock,
   Users,
@@ -12,9 +12,11 @@ import {
   Phone,
   User,
   Calendar,
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import Link from "next/link";
+import { whatsappLink } from "@/utils/constant";
 
 interface PackageCardProps {
   image: string;
@@ -35,26 +37,26 @@ export function PackageCard({
 }: PackageCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    travelDate: '',
-    groupSize: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    travelDate: "",
+    groupSize: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your enquiry! Our team will contact you shortly.');
+    console.log("Form submitted:", formData);
+    alert("Thank you for your enquiry! Our team will contact you shortly.");
     setIsModalOpen(false);
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      travelDate: '',
-      groupSize: '',
-      message: '',
+      name: "",
+      email: "",
+      phone: "",
+      travelDate: "",
+      groupSize: "",
+      message: "",
     });
   };
 
@@ -64,7 +66,7 @@ export function PackageCard({
         className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
         whileHover={{ y: -12 }}
       >
@@ -74,7 +76,7 @@ export function PackageCard({
             className="absolute top-4 left-4 z-10 bg-linear-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
             initial={{ scale: 0, rotate: -10 }}
             whileInView={{ scale: 1, rotate: 0 }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
           >
             <Sparkles className="h-4 w-4" />
             <span>Popular</span>
@@ -115,13 +117,15 @@ export function PackageCard({
           </div>
 
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <button
-              onClick={() => setIsModalOpen(true)}
+            <Link
+              href={whatsappLink}
+              target="_blank"
+              // onClick={() => setIsModalOpen(true)}
               className="flex items-center justify-center bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 w-full h-12 rounded-xl group/btn"
             >
               <span>Request Package</span>
               <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-            </button>
+            </Link>
           </motion.div>
         </div>
 
@@ -150,7 +154,7 @@ export function PackageCard({
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
             >
               {/* Close Button */}
@@ -164,7 +168,11 @@ export function PackageCard({
               <div className="overflow-y-auto max-h-[90vh]">
                 {/* Hero */}
                 <div className="relative h-64 overflow-hidden">
-                  <ImageWithFallback src={image} alt={title} className="w-full h-full object-cover" />
+                  <ImageWithFallback
+                    src={image}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
 
                   {popular && (
@@ -210,11 +218,14 @@ export function PackageCard({
                     </div>
 
                     <div className="bg-gray-50 p-4 rounded-xl">
-                      <h4 className="text-gray-900 mb-2">Why Choose This Package?</h4>
+                      <h4 className="text-gray-900 mb-2">
+                        Why Choose This Package?
+                      </h4>
                       <p className="text-gray-600">
-                        Carefully curated for the best experience. Our expert team ensures every
-                        detail is perfect, from accommodation to activities. Flexible itineraries and
-                        dedicated support throughout your journey.
+                        Carefully curated for the best experience. Our expert
+                        team ensures every detail is perfect, from accommodation
+                        to activities. Flexible itineraries and dedicated
+                        support throughout your journey.
                       </p>
                     </div>
                   </div>
@@ -232,7 +243,9 @@ export function PackageCard({
                           type="text"
                           required
                           value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, name: e.target.value })
+                          }
                           className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
                           placeholder="Enter your name"
                         />
@@ -247,7 +260,9 @@ export function PackageCard({
                           type="email"
                           required
                           value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                          }
                           className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
                           placeholder="your@email.com"
                         />
@@ -262,7 +277,9 @@ export function PackageCard({
                           type="tel"
                           required
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({ ...formData, phone: e.target.value })
+                          }
                           className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
                           placeholder="+91 XXXXX XXXXX"
                         />
@@ -278,7 +295,10 @@ export function PackageCard({
                             type="date"
                             value={formData.travelDate}
                             onChange={(e) =>
-                              setFormData({ ...formData, travelDate: e.target.value })
+                              setFormData({
+                                ...formData,
+                                travelDate: e.target.value,
+                              })
                             }
                             className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
                           />
@@ -293,7 +313,10 @@ export function PackageCard({
                             type="number"
                             value={formData.groupSize}
                             onChange={(e) =>
-                              setFormData({ ...formData, groupSize: e.target.value })
+                              setFormData({
+                                ...formData,
+                                groupSize: e.target.value,
+                              })
                             }
                             className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
                             placeholder="10"
@@ -302,10 +325,17 @@ export function PackageCard({
                       </div>
 
                       <div>
-                        <label className="block text-gray-700 mb-2">Additional Message</label>
+                        <label className="block text-gray-700 mb-2">
+                          Additional Message
+                        </label>
                         <textarea
                           value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              message: e.target.value,
+                            })
+                          }
                           rows={3}
                           className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all resize-none"
                           placeholder="Tell us about your requirements..."

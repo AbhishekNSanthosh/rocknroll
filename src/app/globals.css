@@ -2,100 +2,69 @@
 
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/preflight.css" layer(base);
+
 @theme {
-  /* SLK custom colors */
-  --color-slk-regular: #133c25;
-  --color-slk-light: #239254;
-  --color-slk-dark: #d5e6dc;
+  /* --- Primary Brand Colors --- */
+  --color-slk-regular: #ffffff;
+  --color-slk-light: #f9f9f9;
+  --color-slk-dark: #f0f0f0;
 
-  --color-slk-black-100: #161617;
-  --color-slk-black-200: #151515;
-  --color-slk-black-300: #0b0b0c;
-
-  /* White */
+  /* --- Neutral Shades --- */
   --color-white: #ffffff;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
 
-  --color-gray-50:#EDEDED;
-  --color-gray-100:#888888;
+  /* --- Accent Colors --- */
+  --color-red-50: #fff0f1;
+  --color-red-100: #ffe3e4;
+  --color-red-200: #ffcbce;
+  --color-red-300: #ffa5aa;
+  --color-red-400: #ff6f78;
+  --color-red-500: #ff3b45;
+  --color-red-600: #e61f2a;
+  --color-red-700: #b81821;
+  --color-red-800: #941217;
+  --color-red-900: #5c0c0f;
+  --color-red-950: #2e0608;
 
-  /* Black shades */
-  --color-black-50: #f6f6f6;
-  --color-black-100: #e7e7e7;
-  --color-black-200: #d1d1d1;
-  --color-black-300: #b0b0b0;
-  --color-black-400: #888888;
-  --color-black-500: #6d6d6d;
-  --color-black-600: #5d5d5d;
-  --color-black-700: #4f4f4f;
-  --color-black-800: #454545;
-  --color-black-900: #3d3d3d;
-  --color-black-950: #000000;
+  /* --- Yellow (for highlights) --- */
+  --color-yellow-50: #fffde8;
+  --color-yellow-100: #fff9c2;
+  --color-yellow-200: #fff176;
+  --color-yellow-300: #ffe733;
+  --color-yellow-400: #ffd60a;
+  --color-yellow-500: #e6b800;
+  --color-yellow-600: #cc9a00;
+  --color-yellow-700: #a87900;
+  --color-yellow-800: #856200;
+  --color-yellow-900: #6b5100;
 
-    --color-red-50: #fff0f1;
-  --color-red-100: #ffdddf;
-  --color-red-200: #ffc1c4;
-  --color-red-300: #ff959a;
-  --color-red-400: #ff5961;
-  --color-red-500: #ff2630;
-  --color-red-600: #fc0612;
-  --color-red-700: #e7000b;
-  --color-red-800: #af050d;
-  --color-red-900: #900c12;
-  --color-red-950: #500004;
-
-
-  /* Gray shades */
-  --color-gray-100: #f7fafc;
-  --color-gray-200: #edf2f7;
-  --color-gray-300: #e2e8f0;
-  --color-gray-400: #cbd5e0;
-  --color-gray-500: #a0aec0;
-  --color-gray-600: #718096;
-  --color-gray-700: #4a5568;
-  --color-gray-800: #2d3748;
-  --color-gray-900: #1a202c;
-
-  /* Yellow shades */
-  --color-yellow-50: #feffe4;
-  --color-yellow-100: #fcffc4;
-  --color-yellow-200: #f7ff90;
-  --color-yellow-300: #edff50;
-  --color-yellow-400: #dfff1b;
-  --color-yellow-500: #c0e600;
-  --color-yellow-600: #95b800;
-  --color-yellow-700: #708b00;
-  --color-yellow-800: #586d07;
-  --color-yellow-900: #4a5c0b;
-  --color-yellow-950: #263400;
-
-  /* Red shades */
-  --color-red-400: #f87171;
-  --color-red-500: #ef4444;
-
-  /* Green */
-  --color-green-400: #4ade80;
-
-  /* Purple */
+  /* --- Supporting Colors --- */
+  --color-green-400: #22c55e;
   --color-purple-800: #6b21a8;
 }
+
 @import "tailwindcss/utilities.css";
 
-/* Custom scrollbar styles for FeaturedEvents */
+/* --- Custom Scrollbar --- */
 .scrolldiv {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-
-.scrolldiv::-webkit-scrollbar {
-  display: none; /* WebKit */
-}
-
-/* Smooth scrolling behavior */
-.scrolldiv {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   scroll-behavior: smooth;
 }
+.scrolldiv::-webkit-scrollbar {
+  display: none;
+}
 
-/* Custom animations */
+/* --- Custom Animations --- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -144,7 +113,15 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: translateX(0);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   animation: shimmer 1.5s infinite;
+}
+
+/* --- Global Background --- */
+body {
+   background-color:#faf9f6;
+}
+
+html {
+  scroll-behavior: smooth;
 }
